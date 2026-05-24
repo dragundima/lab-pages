@@ -284,6 +284,7 @@
   .modal ul li { margin-bottom: 4px; }
   .modal a { color: var(--accent); text-decoration: none; }
   .modal a:hover { text-decoration: underline; }
+  .modal code { background: var(--bg); border: 1px solid var(--border); padding: 1px 5px; border-radius: 3px; font-size: 12.5px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
   .modal-close {
     position: absolute; top: 10px; right: 12px; background: none; border: none;
     font-size: 26px; line-height: 1; color: var(--muted); cursor: pointer;
@@ -614,7 +615,7 @@
       <div class="howto-body">
         <h2>Как загрузить свои данные</h2>
         <p>Медкарта и анализы собирается из любых источников, которые у вас есть в наличии: документы, PDF, изображения, анамнез и прочее.</p>
-        <p>Для этого откройте нейросеть <a href="https://claude.com/product/cowork" target="_blank" rel="noopener">Claude Cowork</a> и загрузите туда все ваши источники.</p>
+        <p>Для этого скопируйте скилы <code>lab-timeline</code> и <code>medical-record</code> с <a href="https://github.com/dragundima/lab-skills" target="_blank" rel="noopener">нашего GitHub</a> в свой <a href="https://docs.claude.com/en/docs/claude-code" target="_blank" rel="noopener">Claude Code</a> и загрузите туда все ваши источники.</p>
       </div>
       <div class="howto-footer">
         <p>Либо вы можете заказать услугу ведения полноценной медкарты с анализами</p>
