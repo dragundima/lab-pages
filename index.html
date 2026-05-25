@@ -3309,7 +3309,25 @@ function parseMarkdown(text) {
 <script async src="https://plausible.io/js/pa-sXR48De9syJKrnWZvFrDE.js"></script>
 <script>
   window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  if (location.hostname === 'lab.dragunlife.ru') plausible.init();
+  (function() {
+    var loc = window.location;
+    // ?nopl или #nopl → запомнить exclude-флаг для этого браузера
+    // и отключить отправку pageview на текущей странице.
+    if (loc.search.indexOf('nopl') !== -1 || loc.hash.indexOf('nopl') !== -1) {
+      try { localStorage.setItem('plausible_ignore', 'true'); } catch(e) {}
+      window.plausible = function() {};
+      return;
+    }
+    // Раньше уже проставленный флаг → этот браузер исключён.
+    try {
+      if (localStorage.getItem('plausible_ignore') === 'true') {
+        window.plausible = function() {};
+        return;
+      }
+    } catch(e) {}
+    // Прод-only — на чужих доменах / file:// / localhost молчим.
+    if (loc.hostname === 'lab.dragunlife.ru') plausible.init();
+  })();
 </script>
 </body>
 </html>
